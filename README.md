@@ -2,23 +2,18 @@
 
 ## 📌 Overview
 
-This project is part of my learning journey where I explored how basic physics concepts can be implemented using Python.
+This project is part of my learning journey where I explore how basic physics concepts can be implemented and visualized using Python.
 
-I started by learning essential parts of:
-
-* NumPy (for calculations)
-* Matplotlib (for plotting)
-
-The focus is not on mastering these libraries fully, but on using them as tools to understand and visualize physics concepts.
+The goal is not to master libraries like NumPy and Matplotlib, but to use them as tools to understand and represent physical systems through code.
 
 ---
 
-##  What I Have Done
+## 🧠 What I Have Learned
 
 ### 🔹 Numerical Computation
 
 * Created time-based arrays using NumPy
-* Implemented basic physics equations (motion, projectile motion)
+* Implemented physics equations (motion, projectile motion)
 * Used vectorized operations instead of loops
 
 ### 🔹 Visualization
@@ -27,50 +22,63 @@ The focus is not on mastering these libraries fully, but on using them as tools 
 * Compared multiple trajectories
 * Used subplots (trajectory and height vs time)
 
+### 🔹 Animation (New 🚀)
+
+* Learned how animations work using frame-based updates
+* Implemented basic animations using `FuncAnimation`
+* Built a projectile motion animation
+
 ---
 
 ## 📂 Project Structure
 
-```plaintext
+```
 physics-visualization/
+│
 ├── numpy_basics/
 │   └── projectile_motion.py
+│
 ├── matplotlib_basics/
 │   └── projectile_plot.py
-├── .gitignore
+│
+├── animation_basics/
+│   ├── intro_notes.py
+│   ├── basic_animation.py
+│   └── projectile_animation.py
+│
+├── README.md
+└── .gitignore
 ```
 
 ---
 
-##  Key Concept Implemented
+## 🎯 Key Concept Implemented
 
 ### Projectile Motion
 
-* x = v cos(θ) t
-* y = v sin(θ) t - (1/2) g t²
+* Horizontal motion:
+  x = v cos(θ) t
 
-These were computed using NumPy and visualized using Matplotlib.
+* Vertical motion:
+  y = v sin(θ) t − (1/2) g t²
+
+These equations are computed using NumPy and visualized using Matplotlib.
 
 ---
 
 ## 📈 Current Status
 
-This is an early-stage project focused on building fundamentals and understanding how code can represent physical systems.
+This is an early-stage project focused on building strong fundamentals and understanding how physics can be translated into code and visual simulations.
 
 ---
 
 ## 🔜 What I Plan to Do Next
 
 * Add more physics concepts (waves, oscillations)
-* Improve visualizations
-* Move towards simple simulations
-* Explore animations using Matplotlib
-
----
-
-## 💡 Purpose
-
-The goal of this project is to gradually build towards more advanced simulations by starting with simple, clear implementations.
+* Improve visualization quality
+* Add trajectory trails and better animations
+* Build interactive simulations
+* Explore real-time simulation tools
 
 ---
 
@@ -82,12 +90,18 @@ The goal of this project is to gradually build towards more advanced simulations
 
 ---
 
-## Note
+## 💡 Purpose
 
-This project reflects my current stage of learning and will evolve as I continue building more concepts.
+The goal of this project is to gradually move from:
+
+```
+basic equations → visualization → animation → simulation
+```
 
 ---
 
 ## 👨‍💻 Author
+
 Dhruv
+
 
