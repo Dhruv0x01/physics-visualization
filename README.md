@@ -22,17 +22,24 @@ The goal is not to master libraries like NumPy and Matplotlib, but to use them a
 * Compared multiple trajectories
 * Used subplots (trajectory and height vs time)
 
-### 🔹 Animation (New 🚀)
+### 🔹 Animation 🚀
 
 * Learned how animations work using frame-based updates
-* Implemented basic animations using `FuncAnimation`
+* Implemented animations using `FuncAnimation`
 * Built a projectile motion animation
+
+### 🔹 Simulation & Interaction (New 🔥)
+
+* Visualized velocity vectors (vx, vy, resultant)
+* Displayed real-time speed and time
+* Added trajectory trail
+* Implemented pause/play and reset controls
 
 ---
 
 ## 📂 Project Structure
 
-```
+```id="rj3k9f"
 physics-visualization/
 │
 ├── numpy_basics/
@@ -44,7 +51,7 @@ physics-visualization/
 ├── animation_basics/
 │   ├── intro_notes.py
 │   ├── basic_animation.py
-│   └── projectile_animation.py
+│   └── projectile_animation.py   # main simulation
 │
 ├── README.md
 └── .gitignore
@@ -66,19 +73,30 @@ These equations are computed using NumPy and visualized using Matplotlib.
 
 ---
 
+## 🎬 Features
+
+* 📈 Real-time projectile animation
+* 🔵 Velocity component visualization (vx, vy)
+* 🟢 Resultant velocity vector
+* 🟠 Trajectory trail
+* ⏱️ Live time display
+* ⚡ Speed (magnitude) display
+* 🎮 Interactive controls (pause/play, reset)
+
+---
+
 ## 📈 Current Status
 
-This is an early-stage project focused on building strong fundamentals and understanding how physics can be translated into code and visual simulations.
+This project has progressed from basic plotting to building an **interactive physics simulation** using Python.
 
 ---
 
 ## 🔜 What I Plan to Do Next
 
-* Add more physics concepts (waves, oscillations)
-* Improve visualization quality
-* Add trajectory trails and better animations
-* Build interactive simulations
-* Explore real-time simulation tools
+* Simulate multiple projectiles
+* Improve UI and controls
+* Move to other physics topics like waves
+* Explore real-time simulation frameworks (e.g., Pygame)
 
 ---
 
@@ -94,7 +112,7 @@ This is an early-stage project focused on building strong fundamentals and under
 
 The goal of this project is to gradually move from:
 
-```
+```id="z4f7j2"
 basic equations → visualization → animation → simulation
 ```
 
@@ -103,5 +121,6 @@ basic equations → visualization → animation → simulation
 ## 👨‍💻 Author
 
 Dhruv
+
 
 
