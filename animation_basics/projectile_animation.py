@@ -11,7 +11,7 @@ theta = np.radians(angle)
 
 # In this 2d projectile motion , total time of flight is T = 2v sinθ / g
 T = (2 * v * np.sin(theta)) / g
-t = np.linspace(0, T, 100)
+t = np.linspace(0, T, 400)
 
 x = v*np.cos(theta)*t
 y = v*np.sin(theta)*t - 0.5*g*t**2
@@ -28,15 +28,15 @@ ax.set_xlabel("Distance")
 ax.set_ylabel("Height")
 ax.grid()
 
-# Speed (resultant vector magnitude)
+# Speed (resultant vector magnitude) text
 resultant_speed_text = ax.text(0.05, 0.95, '', transform=ax.transAxes, fontsize=12, bbox = dict(facecolor='white', alpha=0.7))
 # 0.05, 0.95 is the position (top-left corner)
 # transform=ax.transAxes -> relative to plot and not data
 
-# Horizontal Velocity magnitude
+# Horizontal Velocity magnitude text
 horizontal_speed_text = ax.text(0.05, 0.90, '', transform=ax.transAxes, fontsize=12, bbox = dict(facecolor='white', alpha=0.7))
 
-# Vertical Velocity magnitude
+# Vertical Velocity magnitude text 
 vertical_speed_text = ax.text(0.05, 0.85, '', transform=ax.transAxes, fontsize=12, bbox = dict(facecolor='white', alpha=0.7))
 
 # Time
@@ -48,11 +48,11 @@ ball, = ax.plot([], [], 'ro')
 #Trajectory trail
 line, = ax.plot([], [], color='orange') 
 
-# Vx and Vy arrow
+# Vx and Vy vector arrow
 vx_arrow = ax.quiver(0,0,0,0, color='blue', angles='xy', scale_units='xy', scale=1)
 vy_arrow = ax.quiver(0,0,0,0, color='red', angles='xy', scale_units='xy', scale=1)
 
-# Resultant Arrow 
+# Resultant vector Arrow 
 arrow = ax.quiver(0, 0, 0, 0, color="green", angles = 'xy', scale_units = 'xy', scale=1)
 
 # Controlling frame manually
@@ -74,7 +74,6 @@ def on_click(event):
     paused = not paused
 
 fig.canvas.mpl_connect('button_press_event', on_click)
-
 
 def update(frame):
     global current_frame
@@ -124,7 +123,7 @@ def update(frame):
 
     return ball, line, arrow, resultant_speed_text, horizontal_speed_text, vertical_speed_text, time_text
 
-ani = FuncAnimation(fig, update, frames=len(t), interval=50)
+ani = FuncAnimation(fig, update, frames=len(t), interval=30, repeat=True)
 
 
 plt.show()
