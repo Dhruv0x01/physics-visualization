@@ -49,8 +49,7 @@ physics-visualization/
 │   └── projectile_plot.py
 │
 ├── animation_basics/
-│   ├── intro_notes.py
-│   ├── basic_animation.py
+│   ├── multiple_projectile_animation.py
 │   └── projectile_animation.py   # main simulation
 │
 ├── README.md
