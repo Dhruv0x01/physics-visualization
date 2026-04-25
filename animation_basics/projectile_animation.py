@@ -8,7 +8,6 @@ g = 9.8
 
 theta = np.radians(angle)
 
-
 # In this 2d projectile motion , total time of flight is T = 2v sinθ / g
 T = (2 * v * np.sin(theta)) / g
 t = np.linspace(0, T, 400)
