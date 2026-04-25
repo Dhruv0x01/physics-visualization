@@ -1,45 +1,44 @@
-# 🚀 Physics Visualization using Python
-
+# 🚀 Physics Visualization
+ 
+A personal learning project where I explore how physics concepts can be implemented, animated, and simulated through code — starting with Python, now expanding into interactive browser-based simulations with p5.js.
+ 
+---
+ 
 ## 📌 Overview
-
-This project is part of my learning journey where I explore how basic physics concepts can be implemented and visualized using Python.
-
-The goal is not to master libraries like NumPy and Matplotlib, but to use them as tools to understand and represent physical systems through code.
-
+ 
+The goal is not to master any single library, but to use code as a tool to **understand and see physics**. Each phase of this project pushed the boundary a little further — from static plots, to animations, to real-time interactive simulations.
+ 
 ---
-
-## 🧠 What I Have Learned
-
-### 🔹 Numerical Computation
-
-* Created time-based arrays using NumPy
-* Implemented physics equations (motion, projectile motion)
-* Used vectorized operations instead of loops
-
-### 🔹 Visualization
-
-* Plotted projectile trajectories
-* Compared multiple trajectories
-* Used subplots (trajectory and height vs time)
-
-### 🔹 Animation 🚀
-
-* Learned how animations work using frame-based updates
-* Implemented animations using `FuncAnimation`
-* Built a projectile motion animation
-
-### 🔹 Simulation & Interaction (New 🔥)
-
-* Visualized velocity vectors (vx, vy, resultant)
-* Displayed real-time speed and time
-* Added trajectory trail
-* Implemented pause/play and reset controls
-
+ 
+## 🧠 What I've Learned
+ 
+### 🔹 Numerical Computation (Python / NumPy)
+- Created time-based arrays using NumPy
+- Implemented physics equations (motion, projectile motion)
+- Used vectorized operations instead of loops
+### 🔹 Visualization (Matplotlib)
+- Plotted projectile trajectories
+- Compared multiple trajectories
+- Used subplots (trajectory and height vs time)
+### 🔹 Animation
+- Learned how animations work using frame-based updates
+- Implemented animations using `FuncAnimation`
+- Built a projectile motion animation
+### 🔹 Simulation & Interaction (Python)
+- Visualized velocity vectors (vx, vy, resultant)
+- Displayed real-time speed and time
+- Added trajectory trail
+- Implemented pause/play and reset controls
+### 🔹 p5.js Basics (New 🔥)
+- Setting up a canvas and background
+- Drawing shapes — ellipse, rect, line
+- Understanding fill, stroke, and how they persist
+- The core draw loop and how motion works in p5.js
 ---
-
+ 
 ## 📂 Project Structure
-
-```id="rj3k9f"
+ 
+```
 physics-visualization/
 │
 ├── numpy_basics/
@@ -50,76 +49,81 @@ physics-visualization/
 │
 ├── animation_basics/
 │   ├── multiple_projectile_animation.py
-│   └── projectile_animation.py   # main simulation
+│   └── projectile_animation.py        # main simulation
+│
+├── p5_basics/                          # NEW — p5.js fundamentals
+│   ├── 01-canvas-and-background/
+│   │   ├── index.html
+│   │   └── sketch.js
+│   └── 02-drawing-shapes/
+│       ├── index.html
+│       └── sketch.js
 │
 ├── README.md
 └── .gitignore
 ```
-
+ 
 ---
-
-## 🎯 Key Concept Implemented
-
-### Projectile Motion
-
-* Horizontal motion:
-  x = v cos(θ) t
-
-* Vertical motion:
-  y = v sin(θ) t − (1/2) g t²
-
-These equations are computed using NumPy and visualized using Matplotlib.
-
+ 
+## 🎯 Key Concepts Implemented
+ 
+### Projectile Motion (Python)
+- Horizontal: `x = v cos(θ) t`
+- Vertical: `y = v sin(θ) t − (1/2) g t²`
+- Computed using NumPy, visualized using Matplotlib
+### p5.js Canvas & Drawing
+- `createCanvas()`, `background()` for setting up the world
+- `ellipse()`, `rect()`, `line()` for drawing
+- `fill()`, `stroke()`, `noStroke()` for styling
+- Understanding that `draw()` runs ~60fps — the heartbeat of every simulation
 ---
-
-## 🎬 Features
-
-* 📈 Real-time projectile animation
-* 🔵 Velocity component visualization (vx, vy)
-* 🟢 Resultant velocity vector
-* 🟠 Trajectory trail
-* ⏱️ Live time display
-* ⚡ Speed (magnitude) display
-* 🎮 Interactive controls (pause/play, reset)
-
+ 
+## 🎬 Features (Python Simulation)
+ 
+- 📈 Real-time projectile animation
+- 🔵 Velocity component visualization (vx, vy)
+- 🟢 Resultant velocity vector
+- 🟠 Trajectory trail
+- ⏱️ Live time display
+- ⚡ Speed (magnitude) display
+- 🎮 Interactive controls (pause/play, reset)
 ---
-
-## 📈 Current Status
-
-This project has progressed from basic plotting to building an **interactive physics simulation** using Python.
-
----
-
-## 🔜 What I Plan to Do Next
-
-* Simulate multiple projectiles
-* Improve UI and controls
-* Move to other physics topics like waves
-* Explore real-time simulation frameworks (e.g., Pygame)
-
----
-
+ 
 ## 🛠️ Tech Stack
-
-* Python
-* NumPy
-* Matplotlib
-
+ 
+| Phase | Stack |
+|-------|-------|
+| Numerical computation | Python, NumPy |
+| Plotting & animation | Matplotlib |
+| Interactive browser simulations | JavaScript, p5.js |
+ 
 ---
-
+ 
+## 🔜 What's Next
+ 
+- [ ] Complete p5.js basics (motion, mouse interaction, sliders)
+- [ ] **Project 1:** Projectile Motion simulator in p5.js
+- [ ] **Project 2:** Orbital Gravity simulator
+- [ ] **Project 3:** N-Body chaos simulation
+- [ ] **Project 4:** Electric Field visualizer
+- [ ] **Project 5:** Electric Potential map
+- [ ] **Project 6:** Charged particle in EM field
+- [ ] **Project 7:** Collision simulator
+- [ ] **Project 8:** Fluid flow simulation
+---
+ 
 ## 💡 Purpose
-
-The goal of this project is to gradually move from:
-
-```id="z4f7j2"
-basic equations → visualization → animation → simulation
+ 
+The journey so far:
+ 
 ```
-
+basic equations → visualization → animation → simulation → interactive p5.js
+```
+ 
+The goal is to eventually build stunning, real-time, browser-based physics simulations that anyone can open and play with.
+ 
 ---
-
+ 
 ## 👨‍💻 Author
-
-Dhruv
-
-
-
+ 
+Dhruv — [@Dhruv0x01](https://github.com/Dhruv0x01)
