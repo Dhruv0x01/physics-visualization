@@ -2,7 +2,17 @@
 
 A personal learning project where I explore how physics concepts can be implemented, animated, and simulated through code — starting with Python, now expanding into interactive browser-based simulations with p5.js.
 
+## 🌐 Live Demos
+
+| Project | Link |
+|---------|------|
+| Project 1 — Projectile Motion | [Play →](https://dhruv0x01.github.io/physics-visualization/projects/01-projectile-motion/) |
+
 ---
+
+## 📌 Overview
+
+
 
 ## 📌 Overview
 
