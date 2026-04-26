@@ -49,7 +49,9 @@ The goal is not to master any single library, but to use code as a tool to **und
 - Fading trail to visualize the arc
 - Sliders for angle, speed, gravity, and bounciness
 - Live angle indicator showing launch direction
-
+- Angle indicator showing launch direction
+- Max height tracker — freezes at peak
+- Live current speed using Pythagoras (√vx²+vy²)
 ---
 
 ## 📂 Project Structure
