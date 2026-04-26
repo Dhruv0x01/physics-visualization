@@ -42,6 +42,14 @@ The goal is not to master any single library, but to use code as a tool to **und
 - Acceleration over time
 - Multiple objects using arrays of objects + for loops
 
+### 🔹 Project 1 — Projectile Motion Simulator (p5.js)
+- Built a full interactive projectile motion simulation
+- Euler integration for real-time physics (vx, vy, gravity)
+- Bouncing off walls and ground with energy loss (coefficient of restitution)
+- Fading trail to visualize the arc
+- Sliders for angle, speed, gravity, and bounciness
+- Live angle indicator showing launch direction
+
 ---
 
 ## 📂 Project Structure
@@ -57,7 +65,7 @@ physics-visualization/
 │
 ├── animation_basics/
 │   ├── multiple_projectile_animation.py
-│   └── projectile_animation.py        # main simulation
+│   └── projectile_animation.py        
 │
 ├── p5_basics/                          # p5.js fundamentals
 │   ├── 01-canvas-and-background/
@@ -69,7 +77,10 @@ physics-visualization/
 │   └── 03-motion/
 │       ├── index.html
 │       └── sketch.js
-│
+├── projects/
+│   └── 01-projectile-motion/    
+│       ├── index.html
+│       └── sketch.js
 ├── README.md
 └── .gitignore
 ```
@@ -123,9 +134,9 @@ physics-visualization/
 
 - [x] Canvas, background, drawing shapes
 - [x] Motion — velocity, bouncing, acceleration, objects & arrays
-- [ ] Mouse interaction
-- [ ] Sliders & UI controls
-- [ ] **Project 1:** Projectile Motion simulator in p5.js
+- [x] Mouse interaction
+- [x] Sliders & UI controls
+- [x] **Project 1:** Projectile Motion simulator in p5.js
 - [ ] **Project 2:** Orbital Gravity simulator
 - [ ] **Project 3:** N-Body chaos simulation
 - [ ] **Project 4:** Electric Field visualizer
