@@ -12,7 +12,7 @@ let angleSlider, speedSlider, gravitySlider, bounceSlider;
 let maxHeight = 0;
 
 function setup(){
-    createCanvas(2900, 700);
+    createCanvas(1900, 700);
     angleSlider = createSlider(0, 90, 45, 1);
     angleSlider.position(10, height+20);
 
