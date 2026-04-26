@@ -9,9 +9,10 @@ let angle = 40;
 let trail = [];
 
 let angleSlider, speedSlider, gravitySlider, bounceSlider;
+let maxHeight = 0;
 
 function setup(){
-    createCanvas(1900, 700);
+    createCanvas(2900, 700);
     angleSlider = createSlider(0, 90, 45, 1);
     angleSlider.position(10, height+20);
 
@@ -31,7 +32,6 @@ function draw(){
     speed = speedSlider.value();
     g = gravitySlider.value();
     bounce = bounceSlider.value();
-    
 
     if(launched){
         x = x + vx;
@@ -47,8 +47,30 @@ function draw(){
         // clear trail 
         if(trail.length > 70){
              trail.shift();
-            }
+        }
+        
+        // for max height 
+        currentHeight = height - 50 - y;
+        if(currentHeight > maxHeight){ maxHeight = currentHeight; }
     }
+    // Current Speed 
+    let currentSpeed = sqrt(vx*vx + vy*vy);
+
+
+    // Angle Indicator
+    let indicatorLength = 80;
+    let theta = radians(angle);
+    let ex = 50 + indicatorLength*cos(theta);
+    let ey = (height-50) - indicatorLength*sin(theta);
+
+    stroke(255, 255, 0, 150); // faint yellow
+    strokeWeight(2);
+    line(50, height-50, ex, ey);
+
+    // arrow head
+    fill(255, 255, 0, 150);
+    noStroke();
+    ellipse(ex, ey, 20, 20);
 
     // trail before ball
     for(let i=0; i < trail.length; i++){
@@ -69,11 +91,14 @@ function draw(){
     text('Speed: '+ speed, 190, height - 20);
     text('Gravity: '+ g, 340, height - 20);
     text('Bounce back: '+ bounce, 520, height - 20);
+    text('Max Height: '+ floor(maxHeight) + 'px', 700, height - 20);
+    text('Current Speed: '+ floor(currentSpeed), 900, height - 20);
 
     stroke(255);
     line(0, height-50, width, height - 50);
 }
 function mousePressed(){
+    maxHeight = 0; // reset on new launch 
     trail = [];
     launched = true;
     x = 50;
