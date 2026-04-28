@@ -7,6 +7,8 @@ A personal learning project where I explore how physics concepts can be implemen
 | Project | Link |
 |---------|------|
 | Project 1 — Projectile Motion | [Play →](https://dhruv0x01.github.io/physics-visualization/projects/01-projectile-motion/) |
+| Project 2 — Orbital Gravity | [Play →](https://dhruv0x01.github.io/physics-visualization/projects/02-orbital-gravity/) |
+
 
 ---
 
@@ -64,6 +66,35 @@ The goal is not to master any single library, but to use code as a tool to **und
 - Live current speed using Pythagoras (√vx²+vy²)
 ---
 
+### Project 2 — Orbital Gravity Simulator
+
+A 2D gravitational sandbox. A massive sun sits in the center; click and drag anywhere on the canvas to launch planets with custom velocity. Each planet feels Newton's gravitational pull and traces its own colored orbit.
+
+**Live demo:** [https://dhruv0x01.github.io/physics-visualization/projects/02-orbital-gravity/]
+**Physics implemented:**
+- Newton's law of gravitation: F = G·M·m / r²
+- Vector force decomposition using unit vectors (dx/r, dy/r)
+- Force → acceleration via Newton's 2nd law (a = F/m)
+- Euler integration for velocity and position updates
+- Per-frame direction recalculation (force vector changes as planet moves)
+
+**Features:**
+- Click-and-drag launch — drag direction sets velocity, drag length sets speed
+- Live angle readout between drag direction and sun-radial — turns green at 90° (the sweet spot for circular orbit)
+- Per-planet color and fading trail
+- Multi-body support — spawn as many planets as you want
+- Clear button + `C` keyboard shortcut to reset
+- Responsive canvas (resizes with window)
+
+**Key insight:** the magic number for circular orbit at distance r is **v = √(G·M/r)**. With G=1, M=10000, r=200, that's v ≈ 7.07. Slower → spiral in. Faster → ellipse or escape. The angle indicator helps users find that perpendicular launch direction reliably.
+
+**What I learned:**
+- Vector decomposition with unit vectors — the dot product as a tool for finding angles between vectors
+- Why orbits actually orbit: gravity bends sideways velocity into a closed loop ("falling and missing")
+- The 1/r² blowup near the sun — a numerical artifact of discrete-step integration, not real physics
+- Object-oriented thinking in JS — bundling state (position, velocity, trail, color) per object so the draw loop stays clean
+- p5.js callbacks like `windowResized` — case-sensitive, silently ignored if misnamed
+
 ## 📂 Project Structure
 
 ```
@@ -90,9 +121,13 @@ physics-visualization/
 │       ├── index.html
 │       └── sketch.js
 ├── projects/
-│   └── 01-projectile-motion/    
-│       ├── index.html
-│       └── sketch.js
+│   ├── 01-projectile-motion/    
+│   │   ├── index.html
+│   │   └── sketch.js
+│   └── 02-orbital-gravity
+│        ├── index.html
+│        └── sketch.js
+│
 ├── README.md
 └── .gitignore
 ```
@@ -149,7 +184,7 @@ physics-visualization/
 - [x] Mouse interaction
 - [x] Sliders & UI controls
 - [x] **Project 1:** Projectile Motion simulator in p5.js
-- [ ] **Project 2:** Orbital Gravity simulator
+- [x] **Project 2:** Orbital Gravity simulator
 - [ ] **Project 3:** N-Body chaos simulation
 - [ ] **Project 4:** Electric Field visualizer
 - [ ] **Project 5:** Electric Potential map
