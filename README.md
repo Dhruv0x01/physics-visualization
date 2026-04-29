@@ -8,7 +8,7 @@ A personal learning project where I explore how physics concepts can be implemen
 |---------|------|
 | Project 1 — Projectile Motion | [Play →](https://dhruv0x01.github.io/physics-visualization/projects/01-projectile-motion/) |
 | Project 2 — Orbital Gravity | [Play →](https://dhruv0x01.github.io/physics-visualization/projects/02-orbital-gravity/) |
-
+| Project 3 — N-Body Chaos | [Play →](https://dhruv0x01.github.io/physics-visualization/projects/03-n-body-chaos/) |
 
 ---
 
@@ -51,6 +51,8 @@ The goal is not to master any single library, but to use code as a tool to **und
 - Wall bouncing with edge detection
 - Acceleration over time
 - Multiple objects using arrays of objects + for loops
+- Responsive canvas — `windowWidth`/`windowHeight` and `windowResized()`
+- Live mouse position with `mouseX`/`mouseY` (where) vs `mousePressed` (when)
 
 ### 🔹 Project 1 — Projectile Motion Simulator (p5.js)
 - Built a full interactive projectile motion simulation
@@ -93,6 +95,38 @@ A 2D gravitational sandbox. A massive sun sits in the center; click and drag any
 - Object-oriented thinking in JS — bundling state (position, velocity, trail, color) per object so the draw loop stays clean
 - p5.js callbacks like `windowResized` — case-sensitive, silently ignored if misnamed
 
+### Project 3 — N-Body Chaos Simulator
+
+The next conceptual jump after Project 2: no fixed sun, no special bodies. Every body pulls on every other body with mutual gravity. Click and drag to launch bodies into the system and watch the chaos unfold.
+
+**Live demo:** [https://dhruv0x01.github.io/physics-visualization/projects/03-n-body-chaos/]
+
+**Physics implemented:**
+- Mutual Newtonian gravity — every body pulls on every other body
+- O(n²) force computation via nested loop over body pairs
+- Two-pass update (compute all forces from a snapshot, then apply) — avoids ordering bugs where one body's update would skew the next body's force calculation
+- Softened gravity (r² + ε) to prevent singularity blowups during close passes
+- Force → acceleration via Newton's 2nd law, then Euler integration
+
+**Features:**
+- Click-and-drag launch with live drag indicator (line + spawn marker)
+- Per-body random color
+- Clear button + `C` keyboard shortcut to reset
+- Responsive canvas
+
+**Tuning:** `G = 2000`, `mass = 1`, drag-to-velocity scale = `0.1`, softening = `r² + 50`. These were dialed in by experimentation — strong enough that two stationary bodies visibly fall together within seconds, soft enough that close passes don't fling bodies offscreen at warp speed.
+
+**Key insight:** two bodies are predictable. Three bodies are chaos. The same physics that gave Project 2 perfect ellipses gives Project 3 unrepeatable, sensitive-to-initial-conditions tangles. Try spawning three stationary bodies in a triangle — same setup twice will give different outcomes because tiny differences in click position get amplified.
+
+**What I learned:**
+- Why physics simulations need a two-pass update loop — mixing reads and writes inside the same loop introduces ordering bugs
+- The singularity problem with point-mass gravity, and why softening (r² + ε) is the standard hack
+- Tuning N-body simulations is half the work — `G`, mass, softening, and time step all interact
+- O(n²) scaling is real — every body added scales force computation quadratically. Fine for v1; matters at v2+
+- "Simple rules, complex behavior" — three lines of physics produce genuinely unpredictable motion
+
+
+
 ## 📂 Project Structure
 
 ```
@@ -115,14 +149,23 @@ physics-visualization/
 │   ├── 02-drawing-shapes/
 │   │   ├── index.html
 │   │   └── sketch.js
-│   └── 03-motion/
+│   ├── 03-Motion/
+│   │   ├── index.html
+│   │   └── sketch.js
+│   ├── 04-responsive-canvas/
+│   │   ├── index.html
+│   │   └── sketch.js
+│   └── 05-mouseX-mouseY/
 │       ├── index.html
 │       └── sketch.js
 ├── projects/
 │   ├── 01-projectile-motion/    
 │   │   ├── index.html
 │   │   └── sketch.js
-│   └── 02-orbital-gravity
+│   ├── 02-orbital-gravity/    
+│   │   ├── index.html
+│   │   └── sketch.js
+│   └── 03-n-body-chaos
 │        ├── index.html
 │        └── sketch.js
 │
@@ -150,6 +193,12 @@ physics-visualization/
 - Wall bouncing by flipping velocity sign on edge collision
 - Acceleration by incrementing velocity each frame
 - Multiple moving objects using arrays of objects + `for` loops
+
+### N-Body Dynamics
+- Mutual gravity via nested pair loop — each body sums force contributions from every other body
+- Two-pass update structure: read all positions → compute forces → write all positions
+- Softening (r² + ε) to handle the close-pass singularity
+- Sensitive dependence on initial conditions — chaos as an emergent property, not coded explicitly
 
 ---
 
@@ -183,7 +232,7 @@ physics-visualization/
 - [x] Sliders & UI controls
 - [x] **Project 1:** Projectile Motion simulator in p5.js
 - [x] **Project 2:** Orbital Gravity simulator
-- [ ] **Project 3:** N-Body chaos simulation
+- [x] **Project 3 (v1):** N-Body chaos simulator (no trails yet)
 - [ ] **Project 4:** Electric Field visualizer
 - [ ] **Project 5:** Electric Potential map
 - [ ] **Project 6:** Charged particle in EM field
