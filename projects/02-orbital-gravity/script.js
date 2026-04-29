@@ -124,10 +124,15 @@ function draw(){
     textSize(13);
     text('Click and drag to launch a planet . Press C or click clear to reset', 20, 60);
 }
+
+// This function captures where you clicked
 function mousePressed(){
     dragStart = {x: mouseX, y: mouseY};
     dragEnd = {x: mouseX, y: mouseY};
 }
+// mousePressed() tell you when, (mouseX, mouseY) tell you where 
+
+
 function mouseDragged(){
     dragEnd = {x: mouseX, y: mouseY};
 }

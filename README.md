@@ -12,8 +12,6 @@ A personal learning project where I explore how physics concepts can be implemen
 
 ---
 
-## 📌 Overview
-
 
 
 ## 📌 Overview

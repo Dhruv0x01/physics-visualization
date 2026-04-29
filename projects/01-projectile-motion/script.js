@@ -12,18 +12,18 @@ let angleSlider, speedSlider, gravitySlider, bounceSlider;
 let maxHeight = 0;
 
 function setup(){
-    createCanvas(1900, 700);
+    createCanvas(windowWidth - 50, windowHeight - 50);
     angleSlider = createSlider(0, 90, 45, 1);
-    angleSlider.position(10, height+20);
+    angleSlider.position(10, windowHeight-40);
 
     speedSlider = createSlider(0, 100, 30, 5);
-    speedSlider.position(190, height+20);
+    speedSlider.position(190, windowHeight-40);
 
     gravitySlider = createSlider(0, 3, 1, 0.2);
-    gravitySlider.position(340, height+20);
+    gravitySlider.position(340, windowHeight-40);
 
     bounceSlider = createSlider(0.4, 1, 0.8, 0.05);
-    bounceSlider.position(520, height+20);
+    bounceSlider.position(520, windowHeight-40);
 
 }
 function draw(){
@@ -87,26 +87,37 @@ function draw(){
 
     fill(255);
     textSize(13);
-    text('Angle: '+ angle + '°', 10, height - 20);
+    text('Angle: '+ angle + '°',10, height - 20);
     text('Speed: '+ speed, 190, height - 20);
     text('Gravity: '+ g, 340, height - 20);
     text('Bounce back: '+ bounce, 520, height - 20);
-    text('Max Height: '+ floor(maxHeight) + 'px', 700, height - 20);
-    text('Current Speed: '+ floor(currentSpeed), 900, height - 20);
+    text('Max Height: '+ floor(maxHeight) + 'px', 800, height - 20);
+    text('Current Speed: '+ floor(currentSpeed), 1100, height - 20);
 
     stroke(255);
     line(0, height-50, width, height - 50);
 }
 function mousePressed(){
     maxHeight = 0; // reset on new launch 
-    trail = [];
-    launched = true;
     x = 50;
     y = height - 50;
     let theta = radians(angle);
     vx = speed*cos(theta);
     vy = -speed*sin(theta);
 }
+function mouseReleased(){
+    trail = [];
+    launched = true;
+}
+
+function windowResized(){
+    resizeCanvas(windowWidth - 50, windowHeight - 50);
+    angleSlider.position(10, windowHeight-40);
+    speedSlider.position(190, windowHeight-40);
+    gravitySlider.position(340, windowHeight-40);
+    bounceSlider.position(520, windowHeight-40);
+}
+
 
 /*
 So in projectile motion:
