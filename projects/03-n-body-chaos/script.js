@@ -53,10 +53,14 @@ function draw(){
         b.y += b.vy;
 
         // ---Trail---
-        b.trail.push({x: b.x, y:b.y});
-        if(b.trail.length > 500){
+        b.trail.push({x: b.x, y:b.y}); // Pushing coordinates of trail through ball live location
+        
+        // To end trail after a certail length 
+        if(b.trail.length > 500){       
             b.trail.shift();
         }
+
+        // Drawing those small circle as trail as balls go on, hence in a loop 
         for(let j = 0; j < b.trail.length; j++){
             let alpha = map(j, 0, b.trail.length, 0, 200);
             fill(b.color[0], b.color[1], b.color[2], alpha);
@@ -64,8 +68,19 @@ function draw(){
             ellipse(b.trail[j].x, b.trail[j].y, 3, 3);
         }
         // --- end trail ---
-
-
+        // The goal of this last loop is to firstly make small balls run behind our ball, giving the impression of a trail 
+        // Now the number of balls is same as trail.length as loop goes from [0 to trail.length-1],
+        // fill(r, g, b, alpha) it takes the fourth number going from 0 to 255, where 0 means fully transparent and
+        // 255 means fully solid color
+        // let alpha = map(), map() is a converter, it takes one range and rescales it to another range,
+        // keeping the proportion same  
+        // map(value, fromLow, fromHigh, toLow, toHigh)
+        // read it as this "value" lives somewhere in the range of fromLow -> fromHigh. Tell me where it lives
+        // in the range of toLow -> toHigh 
+        // let alpha = map(j, 0, b.trail.length, 0, 200);
+        // read it as, "j" is somewhere between 0 and b.trail.length. Convert it to a number between 0 and 200.
+        // Since j increases as we move from oldest to newest point, alpha increases too — old points end up nearly invisible, 
+        // new points end up bright. That gradient is what makes it look like a fading trail.
 
         fill(b.color[0], b.color[1], b.color[2]);
         noStroke();
