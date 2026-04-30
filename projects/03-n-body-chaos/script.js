@@ -51,6 +51,7 @@ function draw(){
         b.vy += ay;
         b.x += b.vx;
         b.y += b.vy;
+        
 
         // ---Trail---
         b.trail.push({x: b.x, y:b.y}); // Pushing coordinates of trail through ball live location
@@ -82,10 +83,20 @@ function draw(){
         // Since j increases as we move from oldest to newest point, alpha increases too — old points end up nearly invisible, 
         // new points end up bright. That gradient is what makes it look like a fading trail.
 
+        // Rendering the ball 
+        let size = (log(b.mass) + 1)*30;
         fill(b.color[0], b.color[1], b.color[2]);
         noStroke();
-        ellipse(b.x, b.y, 30, 30);
+        ellipse(b.x, b.y, size, size);
     }
+
+    // Ejection cleanup - runs after all bodies updated this frame 
+    bodies = bodies.filter(b =>
+        b.x > -width && 
+        b.x < width*2 &&
+        b.y > -height &&
+        b.y < height*2
+    );
 
     // Drag indicator
     if(dragStart && dragEnd){
@@ -98,6 +109,25 @@ function draw(){
         noStroke();
         ellipse(dragStart.x, dragStart.y, 10, 10);
     }
+
+    // Instruction overlay
+    fill(255, 255, 255, 150);
+    noStroke();
+    textSize(13);
+    text('Drag to launch a body', 20, 60);
+    text('Shift + drag → heavy body (sun)', 20, 80);
+    text('C or Clear button → reset', 20, 100);
+
+    // HUD
+    let totalKE = 0;
+    for(let i=0; i<bodies.length; i++){
+        let b = bodies[i];
+        let v2 = b.vx*b.vx + b.vy*b.vy;
+        totalKE += 0.5 * b.mass * v2;
+    }
+
+    text('Bodies: ' + bodies.length, 20, 140);
+    text('Kinetic Energy: ' + floor(totalKE), 20, 160);
 
 }
 function windowResized(){
@@ -127,8 +157,9 @@ function mouseDragged(){
 // compute velocity from the drag and spawn the body 
 // fire once the mouse is released 
 function mouseReleased(){
-    let vx = (dragEnd.x - dragStart.x)*0.1; // 30 pixel to 3 speed 
-    let vy = (dragEnd.y - dragStart.y)*0.1; 
+    let bodyMass = keyIsDown(SHIFT) ? 20 : 1; 
+    let vx = (dragEnd.x - dragStart.x)*0.05 / bodyMass; // 30 pixel to 3 speed 
+    let vy = (dragEnd.y - dragStart.y)*0.05 / bodyMass; 
 
 
     bodies.push({
@@ -138,7 +169,7 @@ function mouseReleased(){
         vy: vy,
         fx: 0,
         fy: 0,
-        mass: 1,
+        mass: bodyMass,
         color: [random(100, 255), random(100, 255), random(100, 255)],
         trail: []
     });
