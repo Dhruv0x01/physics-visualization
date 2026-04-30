@@ -52,6 +52,21 @@ function draw(){
         b.x += b.vx;
         b.y += b.vy;
 
+        // ---Trail---
+        b.trail.push({x: b.x, y:b.y});
+        if(b.trail.length > 500){
+            b.trail.shift();
+        }
+        for(let j = 0; j < b.trail.length; j++){
+            let alpha = map(j, 0, b.trail.length, 0, 200);
+            fill(b.color[0], b.color[1], b.color[2], alpha);
+            noStroke();
+            ellipse(b.trail[j].x, b.trail[j].y, 3, 3);
+        }
+        // --- end trail ---
+
+
+
         fill(b.color[0], b.color[1], b.color[2]);
         noStroke();
         ellipse(b.x, b.y, 30, 30);
