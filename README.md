@@ -232,7 +232,7 @@ physics-visualization/
 - [x] Sliders & UI controls
 - [x] **Project 1:** Projectile Motion simulator in p5.js
 - [x] **Project 2:** Orbital Gravity simulator
-- [x] **Project 3 (v1):** N-Body chaos simulator (no trails yet)
+- [x] **Project 3 :** N-Body chaos simulator 
 - [ ] **Project 4:** Electric Field visualizer
 - [ ] **Project 5:** Electric Potential map
 - [ ] **Project 6:** Charged particle in EM field
